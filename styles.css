@@ -1,0 +1,743 @@
+/* ==============================
+   FONTS
+   ============================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ==============================
+   CSS CUSTOM PROPERTIES
+   ============================== */
+:root {
+  --lavender-100: #f3e8ff;
+  --lavender-200: #e9d5ff;
+  --lavender-300: #d8b4fe;
+  --lavender-400: #c084fc;
+  --lavender-500: #a855f7;
+  --lavender-600: #9333ea;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --white: #ffffff;
+  --off-white: #faf5ff;
+  --text-primary: #581c87;
+  --text-secondary: #7c3aed;
+  --text-muted: #a78bfa;
+  --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 30%, #fce7f3 60%, #f3e8ff 100%);
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-shadow: 0 8px 32px rgba(168, 85, 247, 0.12);
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Quicksand', 'Segoe UI', sans-serif;
+}
+
+/* ==============================
+   RESET & BASE
+   ============================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==============================
+   PAGE SECTIONS
+   ============================== */
+.page-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+#page-greeting {
+  background: linear-gradient(160deg, #f3e8ff 0%, #fae8ff 40%, #fce7f3 70%, #ede9fe 100%);
+}
+
+#page-song {
+  background: linear-gradient(160deg, #ede9fe 0%, #f3e8ff 40%, #fae8ff 70%, #fce7f3 100%);
+}
+
+/* ==============================
+   FLOATING HEARTS
+   ============================== */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -30px;
+  opacity: 0;
+  animation: floatUp linear infinite;
+  font-size: 1rem;
+  color: var(--lavender-300);
+}
+
+.heart:nth-child(1)  { left: 5%;  animation-duration: 12s; animation-delay: 0s;   font-size: 0.9rem; }
+.heart:nth-child(2)  { left: 15%; animation-duration: 14s; animation-delay: 2s;   font-size: 1.1rem; }
+.heart:nth-child(3)  { left: 25%; animation-duration: 10s; animation-delay: 4s;   font-size: 0.7rem; }
+.heart:nth-child(4)  { left: 35%; animation-duration: 16s; animation-delay: 1s;   font-size: 1.3rem; }
+.heart:nth-child(5)  { left: 45%; animation-duration: 11s; animation-delay: 3s;   font-size: 0.8rem; }
+.heart:nth-child(6)  { left: 55%; animation-duration: 13s; animation-delay: 5s;   font-size: 1rem;   }
+.heart:nth-child(7)  { left: 65%; animation-duration: 15s; animation-delay: 0.5s; font-size: 1.2rem; }
+.heart:nth-child(8)  { left: 75%; animation-duration: 12s; animation-delay: 3.5s; font-size: 0.6rem; }
+.heart:nth-child(9)  { left: 85%; animation-duration: 14s; animation-delay: 2.5s; font-size: 1rem;   }
+.heart:nth-child(10) { left: 92%; animation-duration: 11s; animation-delay: 4.5s; font-size: 0.9rem; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ==============================
+   LAVENDER FLOWER DECORATIONS (CSS-only)
+   ============================== */
+.flower-deco {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.25;
+  pointer-events: none;
+  animation: swayFlower 6s ease-in-out infinite;
+}
+
+.flower-deco.top-left     { top: 8%;  left: 5%;  animation-delay: 0s;   }
+.flower-deco.top-right    { top: 6%;  right: 6%; animation-delay: 1s;   }
+.flower-deco.bottom-left  { bottom: 10%; left: 8%;  animation-delay: 2s; font-size: 1.2rem; }
+.flower-deco.bottom-right { bottom: 8%;  right: 5%; animation-delay: 0.5s; }
+.flower-deco.mid-left     { top: 50%; left: 3%;  animation-delay: 1.5s; font-size: 1rem; }
+.flower-deco.mid-right    { top: 45%; right: 4%; animation-delay: 2.5s; font-size: 1.1rem; }
+
+@keyframes swayFlower {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50%      { transform: rotate(5deg) translateY(-8px); }
+}
+
+/* ==============================
+   PAGE 1 — GREETING
+   ============================== */
+.greeting-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out;
+}
+
+.cat-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--lavender-200);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
+  margin-bottom: 1.5rem;
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+.greeting-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.greeting-message {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.btn-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--lavender-400), var(--lavender-500));
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+  text-decoration: none;
+}
+
+.btn-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, var(--lavender-500), var(--lavender-600));
+  color: var(--white);
+}
+
+.btn-continue:active {
+  transform: translateY(0);
+}
+
+.btn-continue .arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-continue:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ==============================
+   PAGE 2 — SONG
+   ============================== */
+.song-section-inner {
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.song-title {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.song-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+/* Music Player Card */
+.music-player-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.album-cover {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2);
+  margin: 0 auto 1.5rem;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.album-cover:hover {
+  transform: scale(1.03);
+}
+
+.music-info {
+  margin-bottom: 1.25rem;
+}
+
+.music-song-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.music-artist {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Progress Bar */
+.progress-bar-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--lavender-200);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 35%;
+  background: linear-gradient(90deg, var(--lavender-400), var(--lavender-500));
+  border-radius: 2px;
+  animation: progressPulse 3s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { width: 30%; }
+  50%      { width: 45%; }
+}
+
+.progress-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+/* Player Controls */
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  padding: 0.3rem;
+}
+
+.control-btn:hover {
+  color: var(--text-secondary);
+  transform: scale(1.1);
+}
+
+.play-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavender-400), var(--lavender-500));
+  border: none;
+  color: var(--white);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.4);
+}
+
+.play-btn:active {
+  transform: scale(0.96);
+}
+
+/* Floating Music Notes */
+.music-notes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.music-note {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--lavender-300);
+  opacity: 0;
+  animation: floatNote 8s ease-in-out infinite;
+}
+
+.music-note:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s;   }
+.music-note:nth-child(2) { left: 80%; top: 30%; animation-delay: 2s;   }
+.music-note:nth-child(3) { left: 20%; top: 70%; animation-delay: 4s;   }
+.music-note:nth-child(4) { right: 10%; top: 60%; animation-delay: 1s;  }
+.music-note:nth-child(5) { left: 50%; top: 10%; animation-delay: 3s;   }
+.music-note:nth-child(6) { right: 20%; top: 80%; animation-delay: 5s;  }
+
+@keyframes floatNote {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20%  { opacity: 0.35; }
+  50%  { transform: translateY(-30px) rotate(15deg); opacity: 0.25; }
+  80%  { opacity: 0.15; }
+  100% { transform: translateY(-60px) rotate(-10deg); opacity: 0; }
+}
+
+/* Listen on Spotify Button */
+.btn-spotify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--lavender-400), var(--lavender-500));
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
+  text-decoration: none;
+}
+
+.btn-spotify:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
+  color: var(--white);
+}
+
+/* Bottom Message */
+.bottom-message {
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.bottom-message p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.bottom-message .closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Scroll reveal — elements start hidden */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==============================
+   AUDIO PLAYER (inline)
+   ============================== */
+.audio-wrapper {
+  margin-top: 0.75rem;
+}
+
+.audio-wrapper audio {
+  width: 100%;
+  height: 36px;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* Equalizer bars animation */
+.eq-bars {
+  display: none; /* hidden by default, shown when playing */
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  height: 20px;
+  margin: 0 auto 0.5rem;
+}
+
+.eq-bars.active {
+  display: flex;
+}
+
+.eq-bar {
+  width: 3px;
+  background: var(--lavender-400);
+  border-radius: 2px;
+  animation: eqBounce 0.6s ease-in-out infinite alternate;
+}
+
+.eq-bar:nth-child(1) { height: 8px;  animation-delay: 0s; }
+.eq-bar:nth-child(2) { height: 14px; animation-delay: 0.1s; }
+.eq-bar:nth-child(3) { height: 10px; animation-delay: 0.2s; }
+.eq-bar:nth-child(4) { height: 16px; animation-delay: 0.15s; }
+.eq-bar:nth-child(5) { height: 6px;  animation-delay: 0.25s; }
+
+@keyframes eqBounce {
+  to { height: 18px; }
+}
+
+/* ==============================
+   BACK BUTTON
+   ============================== */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1.5px solid var(--lavender-300);
+  color: var(--text-secondary);
+  border-radius: 50px;
+  padding: 0.5rem 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+
+.btn-back:hover {
+  background: var(--lavender-200);
+  color: var(--text-primary);
+  border-color: var(--lavender-400);
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 767.98px) {
+  .greeting-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .greeting-title {
+    font-size: 1.6rem;
+  }
+
+  .greeting-message {
+    font-size: 0.95rem;
+    padding: 0;
+  }
+
+  .cat-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .song-title {
+    font-size: 1.5rem;
+  }
+
+  .album-cover {
+    width: 150px;
+    height: 150px;
+  }
+
+  .music-player-card {
+    padding: 1.5rem;
+  }
+
+  .music-song-title {
+    font-size: 1.2rem;
+  }
+
+  .flower-deco {
+    font-size: 1.1rem;
+    opacity: 0.18;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .page-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .greeting-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .greeting-title {
+    font-size: 1.4rem;
+  }
+
+  .greeting-message {
+    font-size: 0.9rem;
+  }
+
+  .cat-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .btn-continue {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .song-title {
+    font-size: 1.3rem;
+  }
+
+  .album-cover {
+    width: 130px;
+    height: 130px;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .greeting-card {
+    max-width: 480px;
+    padding: 2.5rem 2rem;
+  }
+
+  .song-section-inner {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 992px) {
+  .greeting-card {
+    max-width: 560px;
+    padding: 3rem 2.5rem;
+  }
+
+  .song-section-inner {
+    max-width: 560px;
+  }
+
+  .greeting-title {
+    font-size: 2.2rem;
+  }
+
+  .song-title {
+    font-size: 2rem;
+  }
+}
+
+/* ==============================
+   SMALL HEARTS ON PAGE 2
+   ============================== */
+.small-hearts {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.small-heart {
+  position: absolute;
+  color: var(--lavender-300);
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.small-heart:nth-child(1) { top: 15%; left: 8%;  font-size: 0.8rem; animation-delay: 0s; }
+.small-heart:nth-child(2) { top: 25%; right: 10%; font-size: 0.6rem; animation-delay: 1s; }
+.small-heart:nth-child(3) { bottom: 20%; left: 12%; font-size: 0.7rem; animation-delay: 0.5s; }
+.small-heart:nth-child(4) { bottom: 15%; right: 8%; font-size: 0.9rem; animation-delay: 1.5s; }
+.small-heart:nth-child(5) { top: 60%; left: 5%; font-size: 0.5rem; animation-delay: 2s; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50%      { transform: scale(1.3); opacity: 0.35; }
+}
+
+/* ==============================
+   SCROLL SNAP (optional smooth paging)
+   ============================== */
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.page-section {
+  scroll-snap-align: start;
+}

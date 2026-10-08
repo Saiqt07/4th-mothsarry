@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 4th Monthsary, Baby 🤍</title>
+  <meta name="description" content="A small, personal gift for you — Happy 4th Monthsary." />
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/NPelFGKMVET2TS6hDKNluS4wGrDCMEg"
+    crossorigin="anonymous"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===========================
+       FLOATING HEARTS (global)
+       =========================== -->
+  <div class="floating-hearts" aria-hidden="true">
+    <span class="heart">💜</span>
+    <span class="heart">🤍</span>
+    <span class="heart">💜</span>
+    <span class="heart">🤍</span>
+    <span class="heart">💜</span>
+    <span class="heart">🤍</span>
+    <span class="heart">💜</span>
+    <span class="heart">🤍</span>
+    <span class="heart">💜</span>
+    <span class="heart">🤍</span>
+  </div>
+
+  <!-- ===========================
+       PAGE 1 — GREETING
+       =========================== -->
+  <section id="page-greeting" class="page-section">
+
+    <!-- Lavender flower decorations -->
+    <span class="flower-deco top-left" aria-hidden="true">🌿</span>
+    <span class="flower-deco top-right" aria-hidden="true">💐</span>
+    <span class="flower-deco bottom-left" aria-hidden="true">🌸</span>
+    <span class="flower-deco bottom-right" aria-hidden="true">🌿</span>
+    <span class="flower-deco mid-left" aria-hidden="true">🌷</span>
+    <span class="flower-deco mid-right" aria-hidden="true">🌸</span>
+
+    <div class="container d-flex justify-content-center">
+      <div class="greeting-card">
+
+        <!-- Cute Cat Image -->
+        <img
+          src="cute-cat.jpg"
+          alt="A cute kawaii cat surrounded by lavender flowers"
+          class="cat-image"
+          loading="eager"
+        />
+
+        <!-- Title -->
+        <h1 class="greeting-title">Happy 4th Monthsary, Baby 🤍</h1>
+
+        <!-- Message -->
+        <p class="greeting-message">
+          Four months with you, and I'm still grateful that I get to call you mine.
+          Thank you for staying, for loving me, and for sharing your little moments with me.
+          I love you always.
+        </p>
+
+        <!-- CTA Button -->
+        <a href="#page-song" id="btn-continue" class="btn-continue" role="button">
+          There's something for you <span class="arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE 2 — HER FAVORITE SONG
+       =========================== -->
+  <section id="page-song" class="page-section">
+
+    <!-- Small decorative hearts -->
+    <div class="small-hearts" aria-hidden="true">
+      <span class="small-heart">💜</span>
+      <span class="small-heart">🤍</span>
+      <span class="small-heart">💜</span>
+      <span class="small-heart">🤍</span>
+      <span class="small-heart">💜</span>
+    </div>
+
+    <!-- Floating music notes -->
+    <div class="music-notes-container" aria-hidden="true">
+      <span class="music-note">♪</span>
+      <span class="music-note">♫</span>
+      <span class="music-note">♪</span>
+      <span class="music-note">♫</span>
+      <span class="music-note">♪</span>
+      <span class="music-note">♫</span>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+      <div class="song-section-inner">
+
+        <!-- Title -->
+        <h2 class="song-title reveal">Your Favorite Song 🎧🤍</h2>
+
+        <!-- Subtitle -->
+        <p class="song-subtitle reveal">
+          I know this is one of your favorites, so I wanted to include it here for you.
+        </p>
+
+        <!-- Music Player Card -->
+        <div class="music-player-card reveal">
+
+          <!-- Album Cover -->
+          <img
+            src="album-cover.jpg"
+            alt="Album cover art for YK by Cean Jr."
+            class="album-cover"
+          />
+
+          <!-- Song Info -->
+          <div class="music-info">
+            <h3 class="music-song-title">YK</h3>
+            <p class="music-artist">Cean Jr.</p>
+          </div>
+
+          <!-- Equalizer Bars -->
+          <div class="eq-bars" id="eq-bars">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar-wrapper">
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-times">
+              <span id="current-time">0:00</span>
+              <span id="total-time">—:——</span>
+            </div>
+          </div>
+
+          <!-- Player Controls -->
+          <div class="player-controls">
+            <button class="control-btn" aria-label="Previous" disabled>
+              <i class="bi bi-skip-start-fill"></i>
+            </button>
+            <button class="play-btn" id="play-btn" aria-label="Play or pause song">
+              <i class="bi bi-play-fill"></i>
+            </button>
+            <button class="control-btn" aria-label="Next" disabled>
+              <i class="bi bi-skip-end-fill"></i>
+            </button>
+          </div>
+
+          <!-- Listen on Spotify -->
+          <a
+            href="https://open.spotify.com/track/0wz2pL0oEZcjDB1GWxe4pX"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-spotify"
+          >
+            <i class="bi bi-spotify"></i> Listen on Spotify
+          </a>
+
+        </div>
+
+        <!-- Hidden audio element — plays the local MP3 -->
+        <audio id="song-audio" preload="metadata">
+          <source src="Cean Jr. - YK (Official Audio).mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <!-- Bottom Message -->
+        <div class="bottom-message reveal">
+          <p>I hope you know I remember the little things you love. 🤍</p>
+          <p class="closing">Happy 4th Monthsary, Baby.</p>
+        </div>
+
+        <!-- Back button -->
+        <a href="#page-greeting" id="btn-back" class="btn-back" role="button">
+          <i class="bi bi-arrow-left"></i> Back
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
